@@ -1,0 +1,485 @@
+{
+    "Legislaturas": {
+        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance", 
+        "@xmlns:xsd": "http://www.w3.org/2001/XMLSchema", 
+        "@xmlns": "http://tempuri.org/", 
+        "Legislatura": [
+            {
+                "ID": "3", 
+                "Numero": "319", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1990-03-11T00:00:00", 
+                "FechaTermino": "1990-05-20T23:59:59"
+            }, 
+            {
+                "ID": "4", 
+                "Numero": "320", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1990-05-21T00:00:00", 
+                "FechaTermino": "1990-09-17T23:59:59"
+            }, 
+            {
+                "ID": "5", 
+                "Numero": "321", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1990-09-18T00:00:00", 
+                "FechaTermino": "1991-05-20T23:59:59"
+            }, 
+            {
+                "ID": "6", 
+                "Numero": "322", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1991-05-21T00:00:00", 
+                "FechaTermino": "1991-09-17T23:59:59"
+            }, 
+            {
+                "ID": "7", 
+                "Numero": "323", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1991-09-18T00:00:00", 
+                "FechaTermino": "1992-05-20T23:59:59"
+            }, 
+            {
+                "ID": "8", 
+                "Numero": "324", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1992-05-21T00:00:00", 
+                "FechaTermino": "1992-09-17T23:59:59"
+            }, 
+            {
+                "ID": "9", 
+                "Numero": "325", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1992-09-18T00:00:00", 
+                "FechaTermino": "1993-05-20T23:59:59"
+            }, 
+            {
+                "ID": "10", 
+                "Numero": "326", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1993-05-21T00:00:00", 
+                "FechaTermino": "1993-09-17T23:59:59"
+            }, 
+            {
+                "ID": "11", 
+                "Numero": "327", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1993-09-18T00:00:00", 
+                "FechaTermino": "1994-03-10T23:59:59"
+            }, 
+            {
+                "ID": "12", 
+                "Numero": "328", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1994-03-11T00:00:00", 
+                "FechaTermino": "1994-05-20T23:59:59"
+            }, 
+            {
+                "ID": "13", 
+                "Numero": "329", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1994-05-21T00:00:00", 
+                "FechaTermino": "1994-09-17T23:59:59"
+            }, 
+            {
+                "ID": "14", 
+                "Numero": "330", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1994-09-18T00:00:00", 
+                "FechaTermino": "1995-05-20T23:59:59"
+            }, 
+            {
+                "ID": "15", 
+                "Numero": "331", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1995-05-21T00:00:00", 
+                "FechaTermino": "1995-09-17T23:59:59"
+            }, 
+            {
+                "ID": "16", 
+                "Numero": "332", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1995-09-18T00:00:00", 
+                "FechaTermino": "1996-05-20T23:59:59"
+            }, 
+            {
+                "ID": "17", 
+                "Numero": "333", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1996-05-21T00:00:00", 
+                "FechaTermino": "1996-09-17T23:59:59"
+            }, 
+            {
+                "ID": "18", 
+                "Numero": "334", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1996-09-18T00:00:00", 
+                "FechaTermino": "1997-05-20T23:59:59"
+            }, 
+            {
+                "ID": "19", 
+                "Numero": "335", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1997-05-21T00:00:00", 
+                "FechaTermino": "1997-09-17T23:59:59"
+            }, 
+            {
+                "ID": "20", 
+                "Numero": "336", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1997-09-18T00:00:00", 
+                "FechaTermino": "1998-03-10T23:59:59"
+            }, 
+            {
+                "ID": "21", 
+                "Numero": "337", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1998-03-11T00:00:00", 
+                "FechaTermino": "1998-05-20T23:59:59"
+            }, 
+            {
+                "ID": "22", 
+                "Numero": "338", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1998-05-21T00:00:00", 
+                "FechaTermino": "1998-09-17T23:59:59"
+            }, 
+            {
+                "ID": "23", 
+                "Numero": "339", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1998-09-18T00:00:00", 
+                "FechaTermino": "1999-05-20T23:59:59"
+            }, 
+            {
+                "ID": "24", 
+                "Numero": "340", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "1999-05-21T00:00:00", 
+                "FechaTermino": "1999-09-17T23:59:59"
+            }, 
+            {
+                "ID": "25", 
+                "Numero": "341", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "1999-09-18T00:00:00", 
+                "FechaTermino": "2000-05-20T23:59:59"
+            }, 
+            {
+                "ID": "26", 
+                "Numero": "342", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2000-05-21T00:00:00", 
+                "FechaTermino": "2000-09-17T23:59:59"
+            }, 
+            {
+                "ID": "27", 
+                "Numero": "343", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "2000-09-18T00:00:00", 
+                "FechaTermino": "2001-05-20T23:59:59"
+            }, 
+            {
+                "ID": "28", 
+                "Numero": "344", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2001-05-21T00:00:00", 
+                "FechaTermino": "2001-09-17T23:59:59"
+            }, 
+            {
+                "ID": "29", 
+                "Numero": "345", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "2001-09-18T00:00:00", 
+                "FechaTermino": "2002-03-10T23:59:59"
+            }, 
+            {
+                "ID": "30", 
+                "Numero": "346", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2002-03-11T00:00:00", 
+                "FechaTermino": "2002-05-20T23:59:00"
+            }, 
+            {
+                "ID": "31", 
+                "Numero": "347", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2002-05-21T00:00:00", 
+                "FechaTermino": "2002-09-17T23:59:00"
+            }, 
+            {
+                "ID": "32", 
+                "Numero": "348", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "2002-09-18T00:00:00", 
+                "FechaTermino": "2003-05-20T23:59:00"
+            }, 
+            {
+                "ID": "33", 
+                "Numero": "349", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2003-05-21T00:00:00", 
+                "FechaTermino": "2003-09-17T23:59:00"
+            }, 
+            {
+                "ID": "34", 
+                "Numero": "350", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "2003-09-18T00:00:00", 
+                "FechaTermino": "2004-05-20T23:59:00"
+            }, 
+            {
+                "ID": "35", 
+                "Numero": "351", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2004-05-21T00:00:00", 
+                "FechaTermino": "2004-09-17T23:59:00"
+            }, 
+            {
+                "ID": "36", 
+                "Numero": "352", 
+                "Tipo": {
+                    "@Codigo": "71", 
+                    "#text": "Extraordinaria"
+                }, 
+                "FechaInicio": "2004-09-18T00:00:00", 
+                "FechaTermino": "2005-05-20T23:59:00"
+            }, 
+            {
+                "ID": "37", 
+                "Numero": "353", 
+                "Tipo": {
+                    "@Codigo": "70", 
+                    "#text": "Ordinaria"
+                }, 
+                "FechaInicio": "2005-05-21T00:00:00", 
+                "FechaTermino": "2006-03-10T23:59:00"
+            }, 
+            {
+                "ID": "38", 
+                "Numero": "354", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2006-03-11T00:00:00", 
+                "FechaTermino": "2007-03-10T23:59:00"
+            }, 
+            {
+                "ID": "39", 
+                "Numero": "355", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2007-03-11T00:00:00", 
+                "FechaTermino": "2008-03-10T23:59:00"
+            }, 
+            {
+                "ID": "40", 
+                "Numero": "356", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2008-03-11T00:00:00", 
+                "FechaTermino": "2009-03-10T23:59:00"
+            }, 
+            {
+                "ID": "41", 
+                "Numero": "357", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2009-03-11T00:00:00", 
+                "FechaTermino": "2010-03-10T23:59:00"
+            }, 
+            {
+                "ID": "42", 
+                "Numero": "358", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2010-03-11T00:00:00", 
+                "FechaTermino": "2011-03-10T23:59:00"
+            }, 
+            {
+                "ID": "43", 
+                "Numero": "359", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2011-03-11T00:00:00", 
+                "FechaTermino": "2012-03-10T23:59:00"
+            }, 
+            {
+                "ID": "44", 
+                "Numero": "360", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2012-03-11T00:00:00", 
+                "FechaTermino": "2013-03-10T23:59:00"
+            }, 
+            {
+                "ID": "45", 
+                "Numero": "361", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2013-03-11T00:00:00", 
+                "FechaTermino": "2014-03-11T12:00:00"
+            }, 
+            {
+                "ID": "46", 
+                "Numero": "362", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2014-03-11T00:00:00", 
+                "FechaTermino": "2015-03-10T23:59:00"
+            }, 
+            {
+                "ID": "47", 
+                "Numero": "363", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2015-03-11T00:00:00", 
+                "FechaTermino": "2016-03-10T23:59:00"
+            }, 
+            {
+                "ID": "48", 
+                "Numero": "364", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2016-03-11T00:00:00", 
+                "FechaTermino": "2017-03-10T23:59:00"
+            }, 
+            {
+                "ID": "49", 
+                "Numero": "365", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2017-03-11T00:00:00", 
+                "FechaTermino": "2018-03-10T23:59:00"
+            }, 
+            {
+                "ID": "50", 
+                "Numero": "366", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2018-03-11T00:00:00", 
+                "FechaTermino": "2019-03-10T23:59:59"
+            }, 
+            {
+                "ID": "51", 
+                "Numero": "367", 
+                "Tipo": {
+                    "@Codigo": "72"
+                }, 
+                "FechaInicio": "2019-03-11T00:00:00", 
+                "FechaTermino": "2020-03-10T23:59:59"
+            }
+        ]
+    }
+}
