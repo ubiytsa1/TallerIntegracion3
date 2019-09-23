@@ -6,7 +6,6 @@ import xml.etree.cElementTree as ET
 import os.path as path
 import os
 import time as ti
-import unicodedata
 #---------------------------------------------(FUNCIONES)---------------------------------------------
 #Recibe url>>retorna codigo fuente
 def ObtenerFuente(url):
@@ -107,7 +106,7 @@ def SeparadorElementos(string):
                 boletin_cortado=CorteSoloNumeros(boletin_cortado)
                 arreglo.append(boletin_cortado)
     return arreglo
-#Recibe boletin>>retorna temas tratados siesque hay, sino 0
+#Recibe boletin>>retorna proyecto de ley tratados siesque hay, sino 0
 def ObtenerProyectoLey(string):
     veces=string.count("<TEMA>")
     tema=""
@@ -124,6 +123,8 @@ def ObtenerProyectoLey(string):
 def escribe(string):
     os.system("cls")
     print string
+#Recibe string>>devuelve strning sin caracteres no ascii
+def removeNonAscii(s): return "".join(i for i in s if ord(i)<128)
 #-----------------------------------------------(CODIGO)----------------------------------------------
 #Flush de Input/Output
 sys.stdout.flush()
@@ -149,7 +150,7 @@ if path.exists("ultima_sesion.txt"):
         for x in [3,2,1,0]:
             ti.sleep(1)
             print x
-        #sys.exit(0)
+        sys.exit(0)
 #Archivo ultima sesion
 escribe("Actualizando archivo de ultima sesion")
 f= open("ultima_sesion.txt","w+")
@@ -184,7 +185,11 @@ for boletin in ID_Boletines:
                 tema=tema.encode('utf-8').strip()
             except:
                 print "| ERROR ASCII | ID:",boletin
-                saltar=1
+                try:
+                    tema=removeNonAscii(tema)
+                except:
+                    print "| ERROR QUITANDO CARACTERES NO ASCII | ID:",boletin
+                    saltar=1
         if saltar==0:
             ET.SubElement(XMLboletin, "BOLETIN", ID=boletin).text = tema.decode("utf8")
             print "| proyecto de ley extraido en boletin: ",boletin
