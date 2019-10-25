@@ -37,7 +37,4 @@ def buscar_sinonimos(enlace):
 	    print i
 	print "-----------------------------------------------------------------------"
 
-palabras_claves=["economia","deporte","ciencia","agricultura"]
-
-for pala in palabras_claves:
-	buscar_sinonimos(pala)
+buscar_sinonimos("libertad")

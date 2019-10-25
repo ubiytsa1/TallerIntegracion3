@@ -119,12 +119,56 @@ def ObtenerProyectoLey(string):
             tema=tema+string
         return tema
     return 0
+#Recibe string>>devuelve datos de votaciones siesque existe en array bidimensional
+def ObtenerVotaciones(string):
+    primera= string[string.find("votaciones")+11:len(string)]
+    if primera[0:13]!="</votaciones>":
+        arreglo_votaciones=[]
+        string=string[string.find("<votacion>"):string.find("</votaciones>")]
+        cantidad_votaciones=string.count("<votacion>")
+        for x in range(0,cantidad_votaciones):
+            #print "votacion numero ",x
+            sesion=arreglar_caracteres(string[string.find("<SESION>")+8:string.find("</SESION>")])
+            fecha=arreglar_caracteres(string[string.find("<FECHA>")+7:string.find("</FECHA>")])
+            tema=arreglar_caracteres(string[string.find("<TEMA>")+6:string.find("</TEMA>")])
+            si=arreglar_caracteres(string[string.find("<SI>")+4:string.find("</SI>")])
+            no=arreglar_caracteres(string[string.find("<NO>")+4:string.find("</NO>")])
+            abstencion=arreglar_caracteres(string[string.find("<ABSTENCION>")+12:string.find("</ABSTENCION>")])
+            pareo=arreglar_caracteres(string[string.find("<PAREO>")+7:string.find("</PAREO>")])
+            quorum=arreglar_caracteres(string[string.find("<QUORUM>")+8:string.find("</QUORUM>")])
+            arreglo_votacion=[sesion,fecha,tema,si,no,abstencion,pareo,quorum]
+            #print "sesion: ",sesion,"\nfecha: ",fecha,"\ntema: ",tema,"\nsi: ",si,"\nno: ",no,"\nabstencion: ",abstencion,"\npareo: ",pareo,"\nquorum: ",quorum,"\n"
+            string=string[string.find("</QUORUM>")+8:len(string)]
+            arreglo_votaciones.append(arreglo_votacion)
+        return arreglo_votaciones
+    else:
+        #print "no existen votaciones"
+        return 0
 #limpia pantalla y escribe
 def escribe(string):
     os.system("cls")
     print string
 #Recibe string>>devuelve strning sin caracteres no ascii
 def removeNonAscii(s): return "".join(i for i in s if ord(i)<128)
+#Recibe string>>devuelve string sin problemas de caracteres
+def arreglar_caracteres(string):
+    string=MATA_ACENTOS_MAXIMO(string)
+    string=removeNonAscii(string)
+    return string
+#Recibe string>>devuelve string con acentos cambiados
+def MATA_ACENTOS_MAXIMO(string):
+    string=string.replace("Á","A")
+    string=string.replace("á","a")
+    string=string.replace("É","E")
+    string=string.replace("é","e")
+    string=string.replace("Í","I")
+    string=string.replace("í","i")
+    string=string.replace("Ó","O")
+    string=string.replace("ó","o")
+    string=string.replace("Ú","U")
+    string=string.replace("ú","u")
+    return string
+
 #-----------------------------------------------(CODIGO)----------------------------------------------
 #Flush de Input/Output
 sys.stdout.flush()
@@ -159,44 +203,62 @@ f.close()
 contador=0
 #Obtener boletines de sesiones
 escribe("Obteniendo boletines")
-for sesion in ID_Sesiones:
-    if contador>=index_ultima_sesion:
-        ID_Boletines_Sesion=ObtenerIDBoletin(ObtenerFuente("http://opendata.camara.cl/wscamaradiputados.asmx/getSesionBoletinXML?prmSesionID=" + sesion))
-        if len(ID_Boletines_Sesion)!=0:
-            print "| ID de sesion: ",sesion," | ID boletines: ",ID_Boletines_Sesion
-            ID_Boletines.extend(ID_Boletines_Sesion)
-    contador=contador+1
+#for sesion in ID_Sesiones:
+#    if contador>=index_ultima_sesion:
+#        ID_Boletines_Sesion=ObtenerIDBoletin(ObtenerFuente("http://opendata.camara.cl/wscamaradiputados.asmx/getSesionBoletinXML?prmSesionID=" + sesion))
+#        if len(ID_Boletines_Sesion)!=0:
+#            print "| ID de sesion: ",sesion," | ID boletines: ",ID_Boletines_Sesion
+#            ID_Boletines.extend(ID_Boletines_Sesion)
+#    contador=contador+1
 #Elimina boletines repetidos
+f = open("boletines.txt", "r")
+for x in f:
+    ID_Boletines.append(x)
+f.close()
+
 escribe("Eliminando boletines repetidos")
 ID_Boletines = list(dict.fromkeys(ID_Boletines))
 #Obtencion de temas de proyectos de ley y escritura de archivo XML
 escribe("Obteniendo proyectos de ley")
-SCD = ET.Element("SCD")
-XMLboletin = ET.SubElement(SCD, "BOLETINES")
+
+XML_Raiz = ET.Element('SCD')
+
 for boletin in ID_Boletines:
-    tema=ObtenerProyectoLey( ObtenerFuente("https://www.senado.cl/wspublico/tramitacion.php?boletin="+boletin[0:boletin.find("-")]))
-    if tema!=0:
-        saltar=0
-        try:
-            tema=unicode(tema, "utf-8").encode('utf-8').strip()
-        except:
-            print "| ERROR UNICODE | ID:",boletin
-            try:
-                tema=tema.encode('utf-8').strip()
-            except:
-                print "| ERROR ASCII | ID:",boletin
-                try:
-                    tema=removeNonAscii(tema)
-                except:
-                    print "| ERROR QUITANDO CARACTERES NO ASCII | ID:",boletin
-                    saltar=1
-        if saltar==0:
-            ET.SubElement(XMLboletin, "BOLETIN", ID=boletin).text = tema.decode("utf8")
-            print "| proyecto de ley extraido en boletin: ",boletin
+    votaciones=ObtenerVotaciones( ObtenerFuente("https://www.senado.cl/wspublico/tramitacion.php?boletin="+boletin[0:boletin.find("-")]))
+    if votaciones!=0:
+        XML_Boletin = ET.SubElement(XML_Raiz, 'boletin',boletin_id=boletin)
+        for votacion in votaciones:
+            sesion=votacion[0]
+            fecha=votacion[1]
+            tema=votacion[2]
+            si=votacion[3]
+            no=votacion[4]
+            abstencion=votacion[5]
+            pareo=votacion[6]
+            quorum=votacion[7]
+            print "| Escribiendo votacion con sesion: ",sesion," | en boletin: ",boletin
+            XML_sesion = ET.SubElement(XML_Boletin, 'votacion_sesion')
+            XML_fecha = ET.SubElement(XML_Boletin, 'votacion_fecha')
+            XML_tema = ET.SubElement(XML_Boletin, 'votacion_tema')
+            XML_si = ET.SubElement(XML_Boletin, 'votacion_si')
+            XML_no = ET.SubElement(XML_Boletin, 'votacion_no')
+            XML_abstencion = ET.SubElement(XML_Boletin, 'votacion_abstencion')
+            XML_pareo = ET.SubElement(XML_Boletin, 'votacion_pareo')
+            XML_quorum = ET.SubElement(XML_Boletin, 'votacion_quorum')
+            XML_sesion.text = sesion
+            XML_fecha.text = fecha
+            XML_tema.text = tema
+            XML_si.text = si
+            XML_no.text = no
+            XML_abstencion.text = abstencion
+            XML_pareo.text = pareo
+            XML_quorum.text = quorum
+
 escribe("Guardando archivo XML")
 try:
-    tree = ET.ElementTree(SCD)
-    tree.write("SCD.xml")
+    datos = ET.tostring(XML_Raiz)
+    myfile = open("SCD.xml", "w")
+    myfile.write(datos)
     escribe("archivo XML guardado")
 except:
     escribe("Error fatal guardando datos en archivo XML")

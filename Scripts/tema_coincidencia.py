@@ -46,7 +46,7 @@ def tema_proyecto(str_proyecto):
 
     #arreglo que guardara lo valores de coincidencia                                                                                                                                                  #por espacios
     lista_coinc = []
-       
+
     #el ratio entrega un numero entre 0 y 1, esto segun el grado de coincidencia que entregue
     coinc_interior = (lista_coinc.append((SM(None,palabras,MInterior).ratio())))
     coinc_secregg = (lista_coinc.append((SM(None,palabras,MSecretariaG).ratio())))
