@@ -6,6 +6,7 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 
+
 def buscar_sinonimos(enlace):
 	palabras_claves=[]
 	sinonimos=[]
@@ -17,24 +18,26 @@ def buscar_sinonimos(enlace):
 	bs=BeautifulSoup(resp.text,'lxml')
 	lista=bs.find_all(class_='trans clickable')
 
-
 	for sin in lista:
 	    sino=sin.find_all('li')
 	    for fin in sino:
-	        palabras_claves.append(fin.next_element)
 
-	#print palabras_claves[0]
+	        palabras_claves.append(fin.next_element)
+	
 	arreglo=[]
-	for palabra in range(len(palabras_claves)):
-	    cadena=palabras_claves[palabra]
-	    if len(cadena)>1:
-	        arreglo=cadena.split(", ")
-	        for tex in arreglo:
-	        	sinonimos.append(tex.strip())
+	#for palabra in range(len(palabras_claves)):
+	cadena=palabras_claves[0]
+	if len(cadena)>1:
+		arreglo=cadena.split(", ")
+		for tex in arreglo:
+			sinonimos.append(tex.strip())
 
 
 	for i in sinonimos:
 	    print i
 	print "-----------------------------------------------------------------------"
 
-buscar_sinonimos("libertad")
+palabras_claves=["economia","deporte","ciencia","agricultura"]
+
+for pala in palabras_claves:
+	buscar_sinonimos(pala)
