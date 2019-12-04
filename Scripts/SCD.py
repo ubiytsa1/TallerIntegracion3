@@ -203,19 +203,19 @@ f.close()
 contador=0
 #Obtener boletines de sesiones
 escribe("Obteniendo boletines")
-#for sesion in ID_Sesiones:
-#    if contador>=index_ultima_sesion:
-#        ID_Boletines_Sesion=ObtenerIDBoletin(ObtenerFuente("http://opendata.camara.cl/wscamaradiputados.asmx/getSesionBoletinXML?prmSesionID=" + sesion))
-#        if len(ID_Boletines_Sesion)!=0:
-#            print "| ID de sesion: ",sesion," | ID boletines: ",ID_Boletines_Sesion
-#            ID_Boletines.extend(ID_Boletines_Sesion)
-#    contador=contador+1
-#Elimina boletines repetidos
-f = open("boletines.txt", "r")
-for x in f:
-    ID_Boletines.append(x)
-f.close()
+for sesion in ID_Sesiones:
+    if contador>=index_ultima_sesion:
+        ID_Boletines_Sesion=ObtenerIDBoletin(ObtenerFuente("http://opendata.camara.cl/wscamaradiputados.asmx/getSesionBoletinXML?prmSesionID=" + sesion))
+        if len(ID_Boletines_Sesion)!=0:
+            print "| ID de sesion: ",sesion," | ID boletines: ",ID_Boletines_Sesion
+            ID_Boletines.extend(ID_Boletines_Sesion)
+    contador=contador+1
+#f = open("boletines.txt", "r")
+#for x in f:
+#    ID_Boletines.append(x)
+#f.close()
 
+#Elimina boletines repetidos
 escribe("Eliminando boletines repetidos")
 ID_Boletines = list(dict.fromkeys(ID_Boletines))
 #Obtencion de temas de proyectos de ley y escritura de archivo XML
