@@ -57,10 +57,37 @@ def normalize(s):
     for a, b in replacements:
         s = s.replace(a, b).replace(a.upper(), b.upper())
     return s
+Palabras =  [['paz','social','seguridad','orden','seguridad','tráfico','microtráfico','patrullaje','comisaría','detenidos','penados','libertad','vecinos','comunitarias']
+        	,['asesoría','decisiones','gestión','cuenta','gobernante','gobernados']
+            ,['dolar','economia','turismo','peso','competitividad','fomento','mercados', 'comercio', 'libre','inversión','aduanas']
+            ,['justicia','normas','leyes','derechos','políticas','proteccion','seguridad','penal','delitos','cohecho','soborno','terrorismo']
+            ,['medicina','hospitales','consultorios','médico','recuperación','salud','enfermedades','COMPIN','hospital','órganos']
+            ,['minera','recursos','naturales','mina','mineras','mercurio']
+            ,['energético','energía','eléctrica','combustibles','sec','planta','solar','electro','climático','ahorrar','eléctrico','generadores','diesel']
+            ,['mujeres','discriminación','género','Sernam','igualdad','equidad','emprendedoras','violencia','aborto','lactancia','materna']
+            ,['relacionamiento','mundo','exterior','extranjero','embajador','alianza','extranjera','intercambio']
+            ,['estabilidad','sustentable']
+            ,['desarrollo','pobreza','social','vulnerables','niñez','adolescencia','aporte','micro','pyme']
+            ,['trabajador','trabajo','laboral','trabajadores','obra']
+            ,['casas','hogar','ciudades','barrio','familias']
+            ,['transporte','locomoción','traslado',' comunicaciones','telecomunicaciones','urbanas','tránsito','velocidad','telecomunicaciones','vehículos','transporte','licencia']
+            ,['ecología','ambiental','renovables','naturales','contaminación','ambiental']
+            ,['composicion','patrimonio','Artes','cultural','artesanía','biblioteca','museo','artísticas','escénicas','audiovisuales']
+            ,['ejercito','naval','fach','fuerzas','armadas','armada','defensa','armas','destrucción']
+            ,['proyecto','congreso','secretaria','gestion']
+            ,['mineduc','bicentenario','escolar','escuelas','educacion','gratuidad','alumnos','jardín','profesores','tecnica','humanidades','ciencias','enseñanza','educativo','educacionales','matrícula','docente']
+            ,['obras','públicas','aeropuertos','hidráulicas','vialidad','sanitarios','aguas','pavimentación']
+            ,['agrícola','animales','agricultores','agroalimentario','lácteos','acuicultura','pesca']
+            ,['inmuebles','patrimoniales','terreno','bienes','nacionales','geoespacial','monumento','territorio','nacional']
+            ,['deporte','deportivas','actividad']
+            ,['ciencia','innovación','tecnología','conicyt']]
 
-palabras_c="deporte"
+for Ministerios in Palabras:
+	for i in Ministerios:
+		buscar_sinonimos(normalize(i))
 
 
 
-buscar_sinonimos(normalize(palabras_c))
+
+
 
