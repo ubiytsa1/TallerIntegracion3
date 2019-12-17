@@ -7,6 +7,12 @@ import sys
 from bs4 import BeautifulSoup
 
 
+"""def leer_archivo():
+	arch1=open("palabras.txt","r")
+	arch1.readlines()
+	print arch1
+	return arch1
+"""
 def buscar_sinonimos(enlace):
 	palabras_claves=[]
 	sinonimos=[]
@@ -17,27 +23,44 @@ def buscar_sinonimos(enlace):
 	resp=requests.get(buscar)
 	bs=BeautifulSoup(resp.text,'lxml')
 	lista=bs.find_all(class_='trans clickable')
+        
 
 	for sin in lista:
 	    sino=sin.find_all('li')
 	    for fin in sino:
 
 	        palabras_claves.append(fin.next_element)
-	
-	arreglo=[]
-	#for palabra in range(len(palabras_claves)):
-	cadena=palabras_claves[0]
-	if len(cadena)>1:
-		arreglo=cadena.split(", ")
-		for tex in arreglo:
-			sinonimos.append(tex.strip())
+	if len(palabras_claves)>0:
+		arreglo=[]
+		cadena=palabras_claves[0]
+		if len(cadena)>1:
+			arreglo=cadena.split(", ")
+			for tex in arreglo:
+				sinonimos.append(tex.strip())
 
 
-	for i in sinonimos:
-	    print i
-	print "-----------------------------------------------------------------------"
+		for i in sinonimos:
+		    print i
+		print "-----------------------------------------------------------------------"
+	else:
+		print "No se ha encontrado sinonimos para ",enlace
 
-palabras_claves=["economia","deporte","ciencia","agricultura"]
 
-for pala in palabras_claves:
-	buscar_sinonimos(pala)
+def normalize(s):
+    replacements = (
+        ("á", "a"),
+        ("é", "e"),
+        ("í", "i"),
+        ("ó", "o"),
+        ("ú", "u"),
+    )
+    for a, b in replacements:
+        s = s.replace(a, b).replace(a.upper(), b.upper())
+    return s
+
+palabras_c="hidráulicas"
+
+
+
+buscar_sinonimos(normalize(palabras_c))
+
