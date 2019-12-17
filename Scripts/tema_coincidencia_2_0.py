@@ -1,11 +1,14 @@
 # -*- coding: cp1252 -*-
 import numpy as np
+from xml.dom import minidom
+import xml.etree.cElementTree as ET
 
 
 #----------------Funcion distancia entre palabras ----------#
 
 def tema (str_proyecto):
-    
+
+    #Funcion para la distancia entre palabras#
     def levenshtein(seq1, seq2):
         size_x = len(seq1) + 1
         size_y = len(seq2) + 1
@@ -32,9 +35,9 @@ def tema (str_proyecto):
         return (matrix[size_x - 1, size_y - 1])
 
 
+    #Limpia los string de caracteres de puntuacion#
     palabras_str= str_proyecto.replace(';',' ').replace('.',' ').replace(',',' ').split()
     palabras_str= [x.lower() for x in palabras_str]
-
 
     #Temas
     temas = ["MInterior","MSecretariaG","MEconomia","MJusticia",
@@ -70,12 +73,27 @@ def tema (str_proyecto):
                 ,['deporte','deportivas','actividad']
                 ,['ciencia','innovación','tecnología','conicyt']]
 
+    #Aplica la funcion de distancia y coloca el resultado en un arreglo#
     val_dist = []
     for i in range(len(Palabras)):
         val_dist.append(levenshtein(palabras_str,Palabras[i]))
 
+    #Asigna el tema segun el mayor numero encontrado y lo imprime#
     tema = temas[np.argmin(val_dist)]
     print "El tema con el que mas coincidencia tiene es ",tema
 
-str_boletin = "Informe de comisión Segunda Subcomisión Especial Mixta de Presupuestos . Partida 20 Ministerio Secretaría General de Gobierno"
-tema (str_boletin)
+
+#Abre el archivo XML
+doc = ET.parse("SCD.xml").getroot()
+
+#Toma los elementos que tienen la etiqueta "votacion_tema" y les asigna el tema
+for item in doc.iter("votacion_tema"):
+    elemento_str = ET.tostring(item)
+    print elemento_str
+    print "------"
+    tema(elemento_str)
+    print "############################"
+
+
+
+
