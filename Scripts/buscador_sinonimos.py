@@ -58,7 +58,7 @@ def normalize(s):
         s = s.replace(a, b).replace(a.upper(), b.upper())
     return s
 
-palabras_c="hidráulicas"
+palabras_c="deporte"
 
 
 
