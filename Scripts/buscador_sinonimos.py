@@ -96,6 +96,7 @@ for Ministerios in Palabras:
                 lis=lis+","+y
                 pass
             pass
+        print lis
         cadenita.append(lis)
         lis=""
         cadena_palabras=[]
