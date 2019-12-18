@@ -6,20 +6,14 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 
-
-"""def leer_archivo():
-	arch1=open("palabras.txt","r")
-	arch1.readlines()
-	print arch1
-	return arch1
-"""
-def buscar_sinonimos(enlace):
+cadena_palabras=[]
+def buscar_sinonimos(palabra):
 	palabras_claves=[]
 	sinonimos=[]
 
 	url='http://www.wordreference.com/sinonimos/'
-	print "el sinonimo a buscar es: "+enlace
-	buscar=url+enlace
+	#print "el sinonimo a buscar es: "+palabra
+	buscar=url+palabra
 	resp=requests.get(buscar)
 	bs=BeautifulSoup(resp.text,'lxml')
 	lista=bs.find_all(class_='trans clickable')
@@ -37,14 +31,12 @@ def buscar_sinonimos(enlace):
 			arreglo=cadena.split(", ")
 			for tex in arreglo:
 				sinonimos.append(tex.strip())
-
-
+		cadena_palabras.append(sinonimos)
 		for i in sinonimos:
 		    print i
-		print "-----------------------------------------------------------------------"
 	else:
-		print "No se ha encontrado sinonimos para ",enlace
-
+		print "No se ha encontrado sinonimos para ",palabra
+	print "-----------------------------------------------------------------------"
 
 def normalize(s):
     replacements = (
@@ -57,36 +49,60 @@ def normalize(s):
     for a, b in replacements:
         s = s.replace(a, b).replace(a.upper(), b.upper())
     return s
-Palabras =  [['paz','social','seguridad','orden','seguridad','tráfico','microtráfico','patrullaje','comisaría','detenidos','penados','libertad','vecinos','comunitarias']
-        	,['asesoría','decisiones','gestión','cuenta','gobernante','gobernados']
-            ,['dolar','economia','turismo','peso','competitividad','fomento','mercados', 'comercio', 'libre','inversión','aduanas']
-            ,['justicia','normas','leyes','derechos','políticas','proteccion','seguridad','penal','delitos','cohecho','soborno','terrorismo']
-            ,['medicina','hospitales','consultorios','médico','recuperación','salud','enfermedades','COMPIN','hospital','órganos']
-            ,['minera','recursos','naturales','mina','mineras','mercurio']
-            ,['energético','energía','eléctrica','combustibles','sec','planta','solar','electro','climático','ahorrar','eléctrico','generadores','diesel']
-            ,['mujeres','discriminación','género','Sernam','igualdad','equidad','emprendedoras','violencia','aborto','lactancia','materna']
-            ,['relacionamiento','mundo','exterior','extranjero','embajador','alianza','extranjera','intercambio']
-            ,['estabilidad','sustentable']
-            ,['desarrollo','pobreza','social','vulnerables','niñez','adolescencia','aporte','micro','pyme']
-            ,['trabajador','trabajo','laboral','trabajadores','obra']
-            ,['casas','hogar','ciudades','barrio','familias']
-            ,['transporte','locomoción','traslado',' comunicaciones','telecomunicaciones','urbanas','tránsito','velocidad','telecomunicaciones','vehículos','transporte','licencia']
-            ,['ecología','ambiental','renovables','naturales','contaminación','ambiental']
-            ,['composicion','patrimonio','Artes','cultural','artesanía','biblioteca','museo','artísticas','escénicas','audiovisuales']
-            ,['ejercito','naval','fach','fuerzas','armadas','armada','defensa','armas','destrucción']
-            ,['proyecto','congreso','secretaria','gestion']
-            ,['mineduc','bicentenario','escolar','escuelas','educacion','gratuidad','alumnos','jardín','profesores','tecnica','humanidades','ciencias','enseñanza','educativo','educacionales','matrícula','docente']
-            ,['obras','públicas','aeropuertos','hidráulicas','vialidad','sanitarios','aguas','pavimentación']
-            ,['agrícola','animales','agricultores','agroalimentario','lácteos','acuicultura','pesca']
-            ,['inmuebles','patrimoniales','terreno','bienes','nacionales','geoespacial','monumento','territorio','nacional']
-            ,['deporte','deportivas','actividad']
-            ,['ciencia','innovación','tecnología','conicyt']]
+ministerios =  ["Interior","Secretaria del gobierno","Economia","Justicia","Salud","Mineria","Energia","Mujer","Relaciones",
+             "Hacienda","DesarrolloF","Trabajo","Vivienda",
+             "Transporte","Ambiente","Cultura","Defensa",
+             "Secretaria general de la Presidencia ","Educacion","Obras","Agricultura",
+             "Bienes","Deporte","Ciencias"]
 
+Palabras =  [['seguridad','orden']
+            ,['asesoría','decisiones','gestión','gobernante']
+            ,['economia','mercados','inversión']
+            ,['justicia','derechos','delitos','terrorismo']
+            ,['medicina','hospitales','médico','salud','enfermedades','COMPIN','órganos']
+            ,['minera','naturales']
+            ,['energía','eléctrica','combustibles']
+            ,['mujeres','discriminación','Sernam','igualdad','equidad']
+            ,['relacionamiento','exterior','extranjero','embajador','alianza']
+            ,['estabilidad','sustentable']
+            ,['desarrollo','pobreza','vulnerables']
+            ,['trabajador','trabajo','laboral']
+            ,['casas','barrio','familias']
+            ,['transporte',' comunicaciones','telecomunicaciones']
+            ,['ecología','ambiental','renovables','naturales','contaminación']
+            ,['patrimonio','Artes','cultural','artesanía','biblioteca','museo']
+            ,['ejercito','armadas','armas']
+            ,['proyecto','congreso','secretaria','gestion']
+            ,['escolar','escuelas','educacion','gratuidad','alumnos','profesores']
+            ,['obras','públicas','aguas','pavimentación']
+            ,['agrícola','animales','agricultores','pesca']
+            ,['patrimoniales','terreno','bienes','monumento']
+            ,['deporte','deportivas','actividad']
+            ,['ciencia','innovación','tecnología','conicyt']]           
+
+
+
+
+palabras_ministerios=[]
+cadenita=[]
+contador=0
 for Ministerios in Palabras:
 	for i in Ministerios:
 		buscar_sinonimos(normalize(i))
+        #print cadena_palabras
+        lis="Ministerio "+ministerios[contador]
+        for xleb in cadena_palabras:
+            for y in xleb:
+                lis=lis+","+y
+                pass
+            pass
+        cadenita.append(lis)
+        lis=""
+        cadena_palabras=[]
+        contador+=1    
 
 
+print cadenita
 
 
 
