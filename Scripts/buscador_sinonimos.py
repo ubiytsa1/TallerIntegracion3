@@ -85,25 +85,24 @@ Palabras =  [['seguridad','orden']
 
 palabras_ministerios=[]
 cadenita=[]
+cadena_ministerio=[]
 contador=0
 for Ministerios in Palabras:
 	for i in Ministerios:
 		buscar_sinonimos(normalize(i))
-        #print cadena_palabras
-        lis="Ministerio "+ministerios[contador]
+        #cadena_palabras
         for xleb in cadena_palabras:
             for y in xleb:
-                lis=lis+","+y
+                cadenita.append(y)
                 pass
             pass
-        print lis
-        cadenita.append(lis)
-        lis=""
+        cadena_ministerio.append(cadenita)
+        cadenita=[]
         cadena_palabras=[]
         contador+=1    
 
 
-for x in cadenita:
+for x in cadena_ministerio:
     print x
     pass
 
