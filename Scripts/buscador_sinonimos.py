@@ -32,11 +32,11 @@ def buscar_sinonimos(palabra):
 			for tex in arreglo:
 				sinonimos.append(tex.strip())
 		cadena_palabras.append(sinonimos)
-		for i in sinonimos:
-		    print i
+		#for i in sinonimos:
+		    #print i
 	else:
 		print "No se ha encontrado sinonimos para ",palabra
-	print "-----------------------------------------------------------------------"
+	#print "-----------------------------------------------------------------------"
 
 def normalize(s):
     replacements = (
@@ -102,8 +102,8 @@ for Ministerios in Palabras:
         contador+=1    
 
 
-print cadenita
-
-
+for x in cadenita:
+    print x
+    pass
 
 
