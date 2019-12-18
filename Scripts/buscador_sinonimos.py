@@ -12,7 +12,7 @@ def buscar_sinonimos(palabra):
 	sinonimos=[]
 
 	url='http://www.wordreference.com/sinonimos/'
-	#print "el sinonimo a buscar es: "+palabra
+	print "el sinonimo a buscar es: "+palabra
 	buscar=url+palabra
 	resp=requests.get(buscar)
 	bs=BeautifulSoup(resp.text,'lxml')
@@ -32,11 +32,11 @@ def buscar_sinonimos(palabra):
 			for tex in arreglo:
 				sinonimos.append(tex.strip())
 		cadena_palabras.append(sinonimos)
-		#for i in sinonimos:
-		    #print i
+		for i in sinonimos:
+		    print i
 	else:
 		print "No se ha encontrado sinonimos para ",palabra
-	#print "-----------------------------------------------------------------------"
+	print "-----------------------------------------------------------------------"
 
 def normalize(s):
     replacements = (
