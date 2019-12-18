@@ -2,7 +2,7 @@
 import numpy as np
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
-
+import json
 
 #----------------Funcion distancia entre palabras ----------#
 
@@ -48,30 +48,30 @@ def tema (str_proyecto):
              "MBienesN","MDeporte","MCiencias"]
 
     #Palabras de los temas (aqui irian los temas con sus palabras obviamente no asi#
-    Palabras =  [['paz','social','seguridad','orden','seguridad','tráfico','microtráfico','patrullaje','comisaría','detenidos','penados','libertad','vecinos','comunitarias']
-                ,['asesoría','decisiones','gestión','cuenta','gobernante','gobernados']
-                ,['dolar','economia','turismo','peso','competitividad','fomento','mercados', 'comercio', 'libre','inversión','aduanas']
-                ,['justicia','normas','leyes','derechos','políticas','proteccion','seguridad','penal','delitos','cohecho','soborno','terrorismo']
-                ,['medicina','hospitales','consultorios','médico','recuperación','salud','enfermedades','COMPIN','hospital','órganos']
+    Palabras =  [['paz','social','seguridad','orden','seguridad','trï¿½fico','microtrï¿½fico','patrullaje','comisarï¿½a','detenidos','penados','libertad','vecinos','comunitarias']
+                ,['asesorï¿½a','decisiones','gestiï¿½n','cuenta','gobernante','gobernados']
+                ,['dolar','economia','turismo','peso','competitividad','fomento','mercados', 'comercio', 'libre','inversiï¿½n','aduanas']
+                ,['justicia','normas','leyes','derechos','polï¿½ticas','proteccion','seguridad','penal','delitos','cohecho','soborno','terrorismo']
+                ,['medicina','hospitales','consultorios','mï¿½dico','recuperaciï¿½n','salud','enfermedades','COMPIN','hospital','ï¿½rganos']
                 ,['minera','recursos','naturales','mina','mineras','mercurio']
-                ,['energético','energía','eléctrica','combustibles','sec','planta','solar','electro','climático','ahorrar','eléctrico','generadores','diesel']
-                ,['mujeres','discriminación','género','Sernam','igualdad','equidad','emprendedoras','violencia','aborto','lactancia','materna']
+                ,['energï¿½tico','energï¿½a','elï¿½ctrica','combustibles','sec','planta','solar','electro','climï¿½tico','ahorrar','elï¿½ctrico','generadores','diesel']
+                ,['mujeres','discriminaciï¿½n','gï¿½nero','Sernam','igualdad','equidad','emprendedoras','violencia','aborto','lactancia','materna']
                 ,['relacionamiento','mundo','exterior','extranjero','embajador','alianza','extranjera','intercambio']
                 ,['estabilidad','sustentable']
-                ,['desarrollo','pobreza','social','vulnerables','niñez','adolescencia','aporte','micro','pyme']
+                ,['desarrollo','pobreza','social','vulnerables','niï¿½ez','adolescencia','aporte','micro','pyme']
                 ,['trabajador','trabajo','laboral','trabajadores','obra']
                 ,['casas','hogar','ciudades','barrio','familias']
-                ,['transporte','locomoción','traslado',' comunicaciones','telecomunicaciones','urbanas','tránsito','velocidad','telecomunicaciones','vehículos','transporte','licencia']
-                ,['ecología','ambiental','renovables','naturales','contaminación','ambiental']
-                ,['composicion','patrimonio','Artes','cultural','artesanía','biblioteca','museo','artísticas','escénicas','audiovisuales']
-                ,['ejercito','naval','fach','fuerzas','armadas','armada','defensa','armas','destrucción']
+                ,['transporte','locomociï¿½n','traslado',' comunicaciones','telecomunicaciones','urbanas','trï¿½nsito','velocidad','telecomunicaciones','vehï¿½culos','transporte','licencia']
+                ,['ecologï¿½a','ambiental','renovables','naturales','contaminaciï¿½n','ambiental']
+                ,['composicion','patrimonio','Artes','cultural','artesanï¿½a','biblioteca','museo','artï¿½sticas','escï¿½nicas','audiovisuales']
+                ,['ejercito','naval','fach','fuerzas','armadas','armada','defensa','armas','destrucciï¿½n']
                 ,['proyecto','congreso','secretaria','gestion']
-                ,['mineduc','bicentenario','escolar','escuelas','educacion','gratuidad','alumnos','jardín','profesores','tecnica','humanidades','ciencias','enseñanza','educativo','educacionales','matrícula','docente']
-                ,['obras','públicas','aeropuertos','hidráulicas','vialidad','sanitarios','aguas','pavimentación']
-                ,['agrícola','animales','agricultores','agroalimentario','lácteos','acuicultura','pesca']
+                ,['mineduc','bicentenario','escolar','escuelas','educacion','gratuidad','alumnos','jardï¿½n','profesores','tecnica','humanidades','ciencias','enseï¿½anza','educativo','educacionales','matrï¿½cula','docente']
+                ,['obras','pï¿½blicas','aeropuertos','hidrï¿½ulicas','vialidad','sanitarios','aguas','pavimentaciï¿½n']
+                ,['agrï¿½cola','animales','agricultores','agroalimentario','lï¿½cteos','acuicultura','pesca']
                 ,['inmuebles','patrimoniales','terreno','bienes','nacionales','geoespacial','monumento','territorio','nacional']
                 ,['deporte','deportivas','actividad']
-                ,['ciencia','innovación','tecnología','conicyt']]
+                ,['ciencia','innovaciï¿½n','tecnologï¿½a','conicyt']]
 
     #Aplica la funcion de distancia y coloca el resultado en un arreglo#
     val_dist = []
@@ -80,20 +80,27 @@ def tema (str_proyecto):
 
     #Asigna el tema segun el mayor numero encontrado y lo imprime#
     tema = temas[np.argmin(val_dist)]
-    print "El tema con el que mas coincidencia tiene es ",tema
+    return "<coincidencia_tema>El tema con el que mas coincidencia tiene es "+tema+"</coincidencia_tema>"
 
 
 #Abre el archivo XML
 doc = ET.parse("SCD.xml").getroot()
 
+
 #Toma los elementos que tienen la etiqueta "votacion_tema" y les asigna el tema
+xml = ""
+xml += "<temas>"
+xml += "\n"
 for item in doc.iter("votacion_tema"):
     elemento_str = ET.tostring(item)
-    print elemento_str
-    print "------"
-    tema(elemento_str)
-    print "############################"
-
-
+    xml += elemento_str
+    xml += "\n"
+    xml += tema(elemento_str)
+    xml += "\n"
+xml += "</temas>"
+    
+#Guarda en un archivo XML
+archivo = open("temas_coincidencia.xml", "w")
+archivo.write(xml)
 
 
